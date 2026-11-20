@@ -1,0 +1,58 @@
+\draw[separator] (0.3,6.15) -- (4.7,6.15);
+\panelheading{0.45}{6.52}{(b) Frozen-policy cycle}
+
+\node[policy,draw=localblue,fill=localblue,text=white] (alpha0)
+    at (1.45,7.35) {$\alpha_0$};
+\node[policy,draw=localblue!60,fill=localblue!5] (alpha1)
+    at (1.45,8.05) {$\alpha_1$};
+\node[policy,draw=exchangeorange!60,fill=exchangeorange!6] (g0)
+    at (1.45,8.75) {$g_0$};
+\node[policy,draw=exchangeorange!60,fill=exchangeorange!6] (g1)
+    at (1.45,9.45) {$g_1$};
+\node[policy,draw=xgreen!60,fill=xgreen!5] (x0)
+    at (1.45,10.15) {$x_0$};
+\node[policy,draw=xgreen!60,fill=xgreen!5] (x1)
+    at (1.45,10.85) {$x_1$};
+\node[policy,draw=ymagenta!60,fill=ymagenta!5] (y0)
+    at (1.45,11.55) {$y_0$};
+\node[policy,draw=ymagenta!60,fill=ymagenta!5] (y1)
+    at (1.45,12.25) {$y_1$};
+\foreach \a/\b in {alpha0/alpha1,alpha1/g0,g0/g1,g1/x0,x0/x1,x1/y0,y0/y1}
+    \draw[flow] (\a.south) -- (\b.north);
+\foreach \y/\steps in {7.35/16,8.05/16,8.75/4,9.45/4,10.15/4,10.85/4,11.55/4,12.25/4} {
+    \draw[flow,draw=muted,line width=0.5pt]
+        (1.91,{\y-0.09}) -- (2.2,{\y-0.09})
+        -- (2.2,{\y+0.10}) -- (1.91,{\y+0.10});
+    \node[smallnote,anchor=west,inner xsep=0pt] at (2.28,\y) {$\times\steps$};
+}
+\node[smallnote] at (3.04,6.9) {Mode};
+\foreach \y/\m in {7.35/0,8.05/1,8.75/0,9.45/1,10.15/0,10.85/1,11.55/0,12.25/1} {
+    \draw[draw=rulegray,line width=0.35pt] (2.83,\y) -- (3.25,\y);
+    \ifnum\m=0
+        \draw[draw=muted,line width=0.7pt]
+            (2.83,{\y-0.08}) -- (3.25,{\y-0.08});
+    \else
+        \draw[draw=muted,line width=0.7pt]
+            (2.83,{\y-0.08}) -- (3.04,{\y-0.08})
+            -- (3.04,{\y+0.08}) -- (3.25,{\y+0.08});
+    \fi
+}
+\draw[flow] (y1.south) -- (1.45,12.70) -- (0.65,12.70)
+    -- (0.65,7.0) -- (1.45,7.0) -- (alpha0.north);
+\node[smallnote,rotate=90,fill=white,inner xsep=3pt] at (0.65,9.85)
+    {Repeat 8-stage sequence $C$ times};
+
+\draw[flow,draw=localblue,line width=0.85pt] (alpha0.north east)
+    -- (3.65,7.13) -- (3.65,10.0);
+\node[edgelabel,text=localblue,anchor=west,align=left,
+    inner xsep=2pt,inner ysep=2pt]
+    at (3.42,8.55) {$a_k\in$\\[1pt]$[-1,1]^8$};
+\draw[draw=localblue!70,fill=localblue!15,line width=0.45pt]
+    (3.37,10.01) rectangle (3.93,12.275);
+\foreach \r in {1,...,7} {
+    \pgfmathsetmacro{\y}{10.01+\r*2.265/8}
+    \draw[draw=localblue!70,line width=0.45pt]
+        (3.37,\y) -- (3.93,\y);
+}
+\node[smallnote,text=localblue] at (3.65,12.75) {Active $\alpha_0$};
+\node[smallnote] at (2.4,13.48) {Policy subscript = Walsh mode $m$};

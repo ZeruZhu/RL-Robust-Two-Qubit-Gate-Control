@@ -1,0 +1,1 @@
+"""Analytical KAK reference construction."""

@@ -1,0 +1,25 @@
+\documentclass[border=3pt]{standalone}
+\usepackage{amsmath,amssymb}
+\usepackage{newtxtext,newtxmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,shapes.geometric}
+\input{styles.tex}
+
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=-1cm,
+    font=\fontsize{8}{9.5}\selectfont,
+    text=ink, line cap=round, line join=round]
+    \path[use as bounding box] (0,0) rectangle (19.4,15.40);
+    \input{calibration_step.tex}
+    \begin{scope}[shift={(0,1.25)}]
+    \input{policy_cycles.tex}
+    \input{pulse_model.tex}
+    \begin{scope}[shift={(0.8,0)}]
+    \input{projection_feedback.tex}
+    \end{scope}
+    \draw[flow,draw=localblue,line width=0.85pt]
+        (3.93,11.15) -- (6.08,11.15);
+    \node[edgelabel,text=localblue] at (5.0,10.65) {Update 8\\coefficients};
+    \end{scope}
+\end{tikzpicture}
+\end{document}

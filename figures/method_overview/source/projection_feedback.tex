@@ -1,0 +1,110 @@
+\draw[separator] (11.85,6.15) -- (18.3,6.15);
+\panelheading{12.0}{6.52}{(d) Segment-projection feedback}
+
+\node[smallnote] at (15.10,7.00)
+    {Reference segment $n=3$, direction $P=Z_2$};
+\node[smallnote,anchor=west,text=ink] at (12.15,7.53)
+    {Hermitian-matrix space};
+
+% A plane schematically represents the six-dimensional local subspace.
+\filldraw[draw=localblue!45,fill=localblue!7,line width=0.5pt]
+    (12.35,8.95) -- (14.65,8.95) -- (15.10,9.35)
+    -- (12.80,9.35) -- cycle;
+\coordinate (localOrigin) at (12.85,9.15);
+\coordinate (localFoot) at (14.15,9.15);
+\coordinate (transportedDirection) at (14.15,7.98);
+\draw[flow,draw=localblue,line width=0.9pt]
+    (localOrigin) -- (transportedDirection);
+\node[text=localblue,anchor=south east,inner sep=2pt]
+    at ($(localOrigin)!0.5!(transportedDirection)$)
+    {$V_3 Z_2 V_3^\dagger$};
+\draw[detail] (transportedDirection) -- (localFoot);
+\draw[flow,draw=localblue,line width=1.05pt] (localOrigin) -- (localFoot);
+\draw[draw=muted,line width=0.45pt]
+    (14.02,9.15) -- (14.02,9.02) -- (14.15,9.02);
+\fill[ink] (localOrigin) circle[radius=0.025cm];
+\fill[localblue] (localFoot) circle[radius=0.03cm];
+\node[text=localblue,anchor=west,inner sep=1pt]
+    at (14.25,9.15) {$A$};
+% The commutator map connects the two spaces, without another projection.
+\node[text=localblue,inner sep=1pt] (commutatorGenerator)
+    at (13.35,10.65) {$\mathcal H_A$};
+\node[text=localblue,anchor=base east,inner sep=1pt] (commutatorInput)
+    at ([xshift=-0.45cm]commutatorGenerator.base west) {$A$};
+\node[text=localblue,anchor=base,inner sep=0pt]
+    at ($(commutatorInput.base east)!0.5!(commutatorGenerator.base west)$)
+    {$\mapsto$};
+\node[text=localblue,anchor=base west,inner sep=0pt]
+    at ([xshift=1pt]commutatorGenerator.base east) {$\,=-i[A,\,\cdot\,]$};
+\draw[flow,draw=localblue] (localFoot) -- (14.15,10.20)
+    -| (commutatorInput.north);
+\node[smallnote,text=localblue,fill=white,inner sep=3pt]
+    at (13.725,9.75) {Local subspace (6 dimensions)};
+
+\begin{scope}[shift={(0,0.80)}]
+\node[smallnote,anchor=west,text=ink] at (12.15,10.65)
+    {Superoperator space};
+
+% A short line depicts the one-dimensional real span of the superoperator.
+\coordinate (projectionOrigin) at (12.65,12.70);
+\coordinate (projectionResidual) at (13.12,11.12);
+\coordinate (projectionDirection) at (14.65,11.65);
+\coordinate (projectionFoot) at
+    ($(projectionOrigin)!(projectionResidual)!(projectionDirection)$);
+\draw[draw=localblue!65,line width=0.65pt]
+    (12.48,12.7893) -- (projectionDirection);
+\node[smallnote,text=localblue,inner sep=1pt] (spanGenerator)
+    at (15.02,11.12) {$\mathcal H_A$};
+\node[smallnote,text=localblue,anchor=base east,inner sep=0pt]
+    at (spanGenerator.base west) {$\operatorname{span}\{$};
+\node[smallnote,text=localblue,anchor=base west,inner sep=0pt]
+    at (spanGenerator.base east) {$\}$};
+\node[smallnote,text=localblue] at (14.75,11.48) {(1 dimension)};
+\draw[flow,draw=ink,line width=0.9pt]
+    (projectionOrigin) -- (projectionResidual);
+\node[anchor=east,inner sep=2pt]
+    at ($(projectionOrigin)!0.5!(projectionResidual)$)
+    {$\mathcal G$};
+\draw[detail] (projectionResidual) -- (projectionFoot);
+\draw[feedbackflow,line width=1.15pt]
+    (projectionOrigin) -- (projectionFoot);
+\fill[ink] (projectionOrigin) circle[radius=0.025cm];
+\fill[feedbackgreen] (projectionFoot) circle[radius=0.03cm];
+\coordinate (projectionAlong) at
+    ($(projectionFoot)!0.12cm!(projectionOrigin)$);
+\coordinate (projectionNormal) at
+    ($(projectionFoot)!0.12cm!(projectionResidual)$);
+\draw[draw=muted,line width=0.45pt]
+    (projectionAlong) --
+    ($(projectionAlong)+(projectionNormal)-(projectionFoot)$) --
+    (projectionNormal);
+\node[text=feedbackgreen,inner sep=1pt] (projectedMatrix)
+    at (13.55,12.95) {$\lambda\mathcal H_A$};
+\node[text=feedbackgreen,inner sep=2pt] (segmentFeature)
+    at (16.45,12.45) {$\eta_{3,Z_2}=7\lambda/\sigma_\delta$};
+\draw[feedbackflow] (projectedMatrix.east) -- (14.75,12.95)
+    -- (14.75,12.45) -- (segmentFeature.west);
+
+% Seven rows identify segments; two columns identify qubits.
+\node[smallnote,text=ink] at (17.33,7.70) {Segment features};
+\node[smallnote] at (16.35,8.13) {$n$};
+\node[smallnote] at (17.06,8.13) {$q_1$};
+\node[smallnote] at (17.60,8.13) {$q_2$};
+\foreach \r in {0,...,6} {
+    \pgfmathsetmacro{\y}{8.40+0.48*\r}
+    \node[smallnote] at (16.35,{\y+0.20})
+        {$\the\numexpr\r+1\relax$};
+    \foreach \c in {0,1} {
+        \pgfmathsetmacro{\x}{16.85+0.54*\c}
+        \draw[draw=feedbackgreen!65,fill=feedbackgreen!10,line width=0.4pt]
+            (\x,\y) rectangle ++(0.42,0.40);
+    }
+}
+\draw[draw=feedbackgreen!65,fill=feedbackgreen!65,line width=0.4pt]
+    (17.39,9.36) rectangle ++(0.42,0.40);
+\node[smallnote] at (17.33,11.98) {$14$ features};
+\draw[feedbackflow] (segmentFeature.east) -- (18.10,12.45)
+    -- (18.10,9.56) -- (17.85,9.56);
+\end{scope}
+\draw[flow,draw=localblue] (commutatorGenerator.south) -- (13.35,11.05)
+    -| (spanGenerator.north);

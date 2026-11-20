@@ -1,0 +1,244 @@
+{
+  "repository": "https://github.com/ZeruZhu/RL_Quantum_Gate_Control",
+  "revision": "321d1ee8b038e3399e44d5d38109c52df1011d7c",
+  "source_root": "function_basis_rl/walsh_reproduction",
+  "files": [
+    {
+      "source": "walsh_rl/config.py",
+      "destination": "src/walsh_rl/config.py",
+      "changes": "Copied; see extraction notes for subsequent edits.",
+      "source_sha256": "bfd51a5212c450869627944fd684f2f5135f55efae3a1e38ae35b526e41ae47e",
+      "artifact_sha256": "d2310808992229792cd2dcb794027cccfa2257a3b3d9098d64203695d8ac7157"
+    },
+    {
+      "source": "walsh_rl/quantum_ops.py",
+      "destination": "src/walsh_rl/quantum_ops.py",
+      "changes": "Copied; see extraction notes for subsequent edits.",
+      "source_sha256": "d029a3f8c628780a9b652592316eea03009d4317d28f078fcaeaf177635d73d1",
+      "artifact_sha256": "d029a3f8c628780a9b652592316eea03009d4317d28f078fcaeaf177635d73d1"
+    },
+    {
+      "source": "walsh_rl/walsh_basis.py",
+      "destination": "src/walsh_rl/walsh_basis.py",
+      "changes": "Copied; see extraction notes for subsequent edits.",
+      "source_sha256": "8c8d432b5ffe26b20ea33d04c1c57c7ed2b9d760f1c7d2d78d2e16cd14ef4ba5",
+      "artifact_sha256": "8c8d432b5ffe26b20ea33d04c1c57c7ed2b9d760f1c7d2d78d2e16cd14ef4ba5"
+    },
+    {
+      "source": "walsh_rl/fidelity_only_controls.py",
+      "destination": "src/walsh_rl/fidelity_only_controls.py",
+      "changes": "Copied; see extraction notes for subsequent edits.",
+      "source_sha256": "3d3dc2960cb5e2311f432ac9686a0e0e56d41e77f10df36e4f64ebeab6abdb01",
+      "artifact_sha256": "3d3dc2960cb5e2311f432ac9686a0e0e56d41e77f10df36e4f64ebeab6abdb01"
+    },
+    {
+      "source": "walsh_rl/rewards.py",
+      "destination": "src/walsh_rl/rewards.py",
+      "changes": "Keep log-infidelity helper only; remove unused old reward.",
+      "source_sha256": "cf23a4865899914980faed8c13ac3e4a2470f549461ef81854f454e7d3ad99f8",
+      "artifact_sha256": "0a300252cf4e0808eef7d359ec72d8a296b5c2dcc3f0bcd9b88f33d9ff528be5"
+    },
+    {
+      "source": "walsh_rl/envs/fidelity_only_multi_agent_env.py",
+      "destination": "src/walsh_rl/envs/fidelity_only_multi_agent_env.py",
+      "changes": "Keep the three reported feedback settings; reject and remove the old alpha accumulation path; update module description.",
+      "source_sha256": "fb270f8b37311d4277e3fea6ce6212bce5f4b54d9beb3421c0c07d9209d85a06",
+      "artifact_sha256": "2bd4a63e789723a8b9f153ffdd1182c0c079d8104e37fc17f665269e708178f7"
+    },
+    {
+      "source": "walsh_rl/training/fidelity_only_multi_agent.py",
+      "destination": "src/walsh_rl/training/fidelity_only_multi_agent.py",
+      "changes": "Preserve staged TD3, context caches, and checkpoint structure; explicitly use weights-only policy loading and trusted full-state resume loading for PyTorch compatibility.",
+      "source_sha256": "8ceeeae1c314bd7355e65e71e1fad2470544a523393ca849c988649d11a5b439",
+      "artifact_sha256": "b7132e9210fd1a2648fa72c66515c542434959500a121eda40efee749a42352a"
+    },
+    {
+      "source": "walsh_rl/training/fidelity_only_cycles.py",
+      "destination": "src/walsh_rl/training/fidelity_only_cycles.py",
+      "changes": "Keep frozen-cycle evaluation and replay validation; remove fallback for the discarded update mode.",
+      "source_sha256": "1188cb9d3bda8a40cfded4ccdfdcebc941d267c9d6c56e113745f7569c190c91",
+      "artifact_sha256": "54769b6c02d64edfaea7cfdc38befa296d9e83e966df4ecd52575c9610f415bd"
+    },
+    {
+      "source": "walsh_rl/training/fidelity_only_td3.py",
+      "destination": "src/walsh_rl/training/fidelity_only_td3.py",
+      "changes": "Copied; see extraction notes for subsequent edits.",
+      "source_sha256": "a81d9de855e21c7c529708b667c6bd68377e33143e8a05dd218353abb5c69e5b",
+      "artifact_sha256": "a81d9de855e21c7c529708b667c6bd68377e33143e8a05dd218353abb5c69e5b"
+    },
+    {
+      "source": "walsh_rl/controls.py",
+      "destination": "src/walsh_rl/controls.py",
+      "changes": "Retained only two-qubit bounds and required local matrix helpers.",
+      "source_sha256": "00757ded0c577a7a48e4174b188b196f48d200622e80931c6eb887b089c2a7f4",
+      "artifact_sha256": "26f402ab617f965023cc3947b17296d5bae6633f5ea934528c80b1bc5d3fcf30"
+    },
+    {
+      "source": "walsh_rl/noise.py",
+      "destination": "src/walsh_rl/noise.py",
+      "changes": "Removed standalone single-qubit jump helper.",
+      "source_sha256": "6495f47be9b151836992a1743ab948e0c4c836dc6ea081b7019523a3e87f2d24",
+      "artifact_sha256": "0542cd540a3471dc31a752a4bea8810c2f47887f155f9f40a8a124e595a61409"
+    },
+    {
+      "source": "walsh_rl/baselines/two_qubit_kak.py",
+      "destination": "src/walsh_rl/baselines/two_qubit_kak.py",
+      "changes": "Keep KAK mathematics and the exchange-compiled 27-control reference; exclude other compilers, dimensions, and experiment runners.",
+      "source_sha256": "96d0e1103c23b6a957c6a9f68c89884b2ff094d8da24fd9b1c1e7c0e85dec6fb",
+      "artifact_sha256": "2622a489ace076d9e3b838ae73f58424617d848667bb9bfe08c8c9794f4510f6"
+    },
+    {
+      "source": "walsh_rl/training/logging.py",
+      "destination": "src/walsh_rl/training/logging.py",
+      "changes": "Selected the JSON helper used by the training pipeline.",
+      "source_sha256": "1d7ad60feabc684eca9c412685a7c3061c0f5875c3bc94f73d19749125bce59a",
+      "artifact_sha256": "b9b706bae75d775bfd926702f1eb0fdc7dbdb5f5b76307360fdc7a282062de48"
+    },
+    {
+      "source": "scripts/prepare_fidelity_only_contexts.py",
+      "destination": "scripts/prepare_contexts.py",
+      "changes": "Renamed CLI; use installed package instead of research-workspace paths.",
+      "source_sha256": "6b9e858a8d31c50e97555a6dd6574d926815adc1c6af49852947cd9635788ec8",
+      "artifact_sha256": "2bb2b37a13b0982ce205d047a3d6f5c75dfa77453777f25f260758ee4a09c7c8"
+    },
+    {
+      "source": "scripts/train_fidelity_only_stage.py",
+      "destination": "scripts/train_stage.py",
+      "changes": "Rename CLI, use installed package, expose device override, and reject conflicting run configurations before writing metadata.",
+      "source_sha256": "64b6acfb37b515a9b4f3844c0fa48e4f0280614aa2d68f054b3d8db83bde568b",
+      "artifact_sha256": "2c75edbd8b05d1225bebda734acde6ce1eef2700d250ba108443fd32b650d4e2"
+    },
+    {
+      "source": "scripts/evaluate_fidelity_only_cycles.py",
+      "destination": "scripts/evaluate_cycles.py",
+      "changes": "Rename CLI, use installed package, and support a stage-root directory.",
+      "source_sha256": "4bc8bb4d94b949789ced2efec9c93f0248c4ac237a7fa65e68bfd2d0aa24e561",
+      "artifact_sha256": "ef1f3af2ef8812b77d1490bd88203c15644668e286b135d09a5ffbe9ba7f957a"
+    },
+    {
+      "source": "scripts/evaluate_fidelity_only_cycle_shard.py",
+      "destination": "scripts/evaluate_cycle_shard.py",
+      "changes": "Use installed package, support a stage-root directory, and default to ten cycles.",
+      "source_sha256": "728de509d13f07e4335a919dd2af274ca8ea2edacbd513cff810f5dcdb0d89ee",
+      "artifact_sha256": "01736940911ffcb0b7093b503a1301356b6ea0c7d58f13334519000f9acd2df8"
+    },
+    {
+      "source": "scripts/prepare_binned_detuning_contexts.py",
+      "destination": "scripts/prepare_detuning_contexts.py",
+      "changes": "Renamed CLI; use installed package instead of research-workspace paths.",
+      "source_sha256": "8b4f9129a13160f0f4001c046fbbf954dd790bc53f40d24e9c20cba6efcad182",
+      "artifact_sha256": "38c9f97881eedc3e317be383b5d1ae73677eb4511e2cf97126e54c1061bfa074"
+    },
+    {
+      "source": "configs/fidelity_only_coworker_localtrunc_d5e6.yaml",
+      "destination": "configs/su4_segment.yaml",
+      "changes": "Renamed experiment label; scientific settings unchanged.",
+      "source_sha256": "443977832cc7e57e4d25132110c1017b3c6efd2a965b7e8ee7ad78c100885440",
+      "artifact_sha256": "0c436446d3833dbca948674aaddb3e5b2daec400515c73ad755d12e6fbacfc7a"
+    },
+    {
+      "source": "configs/fidelity_only_coworker_localtrunc_cnot_d5e6.yaml",
+      "destination": "configs/cnot_segment.yaml",
+      "changes": "Renamed experiment label; scientific settings unchanged.",
+      "source_sha256": "dea613bc84cc9bbd08c8fdc0c927d22ea1f7df8f7cf35a6caea3a000231ceac6",
+      "artifact_sha256": "9964b9e4a8dc0ebca8d4f18292488338bdde051fa5b6d2276968616551b2a2a3"
+    },
+    {
+      "source": "configs/fidelity_only_coworker_reproduction_d5e6.yaml",
+      "destination": "configs/su4_fidelity.yaml",
+      "changes": "Renamed experiment label; scientific settings unchanged.",
+      "source_sha256": "3faaaf89f7b5da4ca854a233b448ff5265697d9d8cd0c86e54a43665bc45f409",
+      "artifact_sha256": "31cbb8dfed31803c52a9366686e90494512e6472f8b060f649d6de38e01a10fe"
+    },
+    {
+      "source": "configs/fidelity_only_coworker_directlocal6_d5e6_seed17.yaml",
+      "destination": "configs/su4_global.yaml",
+      "changes": "Renamed experiment label; scientific settings unchanged.",
+      "source_sha256": "e1a55b6f4910901667995e3f425e543761d5e24e81ae3d805f9ddfbf89be1110",
+      "artifact_sha256": "6c8ced811c29d9a6bd55b740f38c3f54f60deee6b03362d595cadb3b1a0949d6"
+    },
+    {
+      "source": "tests/test_quantum_ops.py",
+      "destination": "tests/test_quantum_ops.py",
+      "changes": "Retain numerical helper tests, remove unrelated single-qubit action tests, and add trace-preservation check.",
+      "source_sha256": "236ec40667631c23ed92f2b3e4ac126be9ea50c5a339a432002d03d2e14b724f",
+      "artifact_sha256": "87cf6774fe1b4c99763f020eac78c65bfaf434ac728678fb89840ecda914b51c"
+    },
+    {
+      "source": "tests/test_walsh_basis.py",
+      "destination": "tests/test_walsh_basis.py",
+      "changes": "Package imports updated; obsolete-convention test adapted separately.",
+      "source_sha256": "18c7511d36500d5f6163d45d1231b5561b55eaa190ec071d0d112f9c72e6771d",
+      "artifact_sha256": "4f06f1037c90f0ebcc88ad6b44c20e5cf67e49866ab1a5c5472634a31ec29eea"
+    },
+    {
+      "source": "tests/test_fidelity_only_calibration.py",
+      "destination": "tests/test_fidelity_only_calibration.py",
+      "changes": "Update imports, keep only the supported compiler test, and add noiseless random-SU4 checks.",
+      "source_sha256": "bd0390a3f39206889c3176ac35cc5d837d6905c6cf666f9ca1bf67b00a980708",
+      "artifact_sha256": "fb0a3dde185d2423684df2d9fa64c3adf0acfdb960c9c22b56d3eb5fc3808edf"
+    },
+    {
+      "source": "walsh_rl/envs/two_qubit_env.py",
+      "destination": "src/walsh_rl/envs/projection_kernels.py",
+      "changes": "Extract reference-midpoint projection kernels; omit other frame choices and unused transverse parameterizations.",
+      "source_sha256": "1f6b22aa9a8f23f528c1cf56e68b8ffeacf778792f1d647149348545b16b5f18",
+      "artifact_sha256": "2b1ca8c4a7dd138da1bb178f605ccf2cb8c237e8a1ccbae4b701990081adabf9"
+    },
+    {
+      "source": "GRAPE/scripts/exchange_grape.py",
+      "destination": "src/walsh_rl/benchmarks/grape.py",
+      "changes": "Extract numerical core and trace schema; include distribution-averaged objective only; no oracle optimizer or cluster launcher.",
+      "source_sha256": "7cbb06401bfca39e7fd8b727bc4ddbcdc298d05d866567796ae47c0418c78183",
+      "artifact_sha256": "395df448f19d5b25ca7a91b8514e1baa99da5a67b9c11c271fe4f41a44c74962"
+    },
+    {
+      "source": "GRAPE/scripts/crab/crab.py",
+      "destination": "src/walsh_rl/benchmarks/fourier.py",
+      "changes": "Extract Fourier/dynamics kernels; remove unused simplex routine, old optimizer, and path-based imports.",
+      "source_sha256": "91ebdb54e1e9aaede62ee1cec473aae1cd8f0b032e21b54978289a3cf68f07f6",
+      "artifact_sha256": "5f7b989d9866f396a97fc465e19f84eff1bf4622ab8f059019ae52e163a8a395"
+    },
+    {
+      "source": "GRAPE/scripts/crab/continuous_adjoint.py",
+      "destination": "src/walsh_rl/benchmarks/continuous_adjoint.py",
+      "changes": "Copied numerical adjoint and algebraic projection pullback.",
+      "source_sha256": "e05125a7bd64655b0dfba1de38e15b31c0f1484e4daf487a07f8130bf505f364",
+      "artifact_sha256": "e05125a7bd64655b0dfba1de38e15b31c0f1484e4daf487a07f8130bf505f364"
+    },
+    {
+      "source": "GRAPE/scripts/crab/crab_lbfgs.py",
+      "destination": "src/walsh_rl/benchmarks/crab.py",
+      "changes": "Selected reported optimizer; removed external frozen-source imports and cluster runners.",
+      "source_sha256": "4ad58a4bed18cdedc5086b2b47007ef9ecd46ccbed4628dbc2a6b870cb8ac5ac",
+      "artifact_sha256": "ea50021a5d8c724f2f4c5d300717524ac6e469efa8304cc8c2cc4448cd388898"
+    },
+    {
+      "source": "walsh_rl/envs/two_qubit_env.py",
+      "destination": "src/walsh_rl/envs/two_qubit_env.py",
+      "changes": "Replace multi-method environment with a seven-segment backend; retain target/noise sampling, propagation order, fidelity, and required projection semantics; verify against source.",
+      "source_sha256": "1f6b22aa9a8f23f528c1cf56e68b8ffeacf778792f1d647149348545b16b5f18",
+      "artifact_sha256": "7ce2b357e379d4846ffcad9c25b0814f19f169f30181a5d58d892d56afaa9b84"
+    },
+    {
+      "source": "GRAPE/paper_results/grape/20261014_r5-grape-su4-part1_20261014/config.yaml",
+      "destination": "configs/benchmarks.yaml",
+      "changes": "Copy GRAPE numerical settings only; remove private paths, run-specific task counts, and scheduler settings.",
+      "source_sha256": "58e197ee39a53a89d17e2b5ba59bea27207b701c53f23f1a12ce706bdfd5ef49",
+      "artifact_sha256": "4e0413438ddd12bc91f6ba8b6790a28c85b712aa6e5ae25d036e1fdae3824f9a"
+    },
+    {
+      "source": "GRAPE/paper_results/crab/20261014_robust_K2_lbfgs300_su4_20261014/config.yaml",
+      "destination": "configs/benchmarks.yaml",
+      "changes": "Copy CRAB numerical settings only; remove private paths and cluster orchestration.",
+      "source_sha256": "9bf5199fea2e1c5262401f36f2887f1b13d6776f8d1aa1c05e89c1106f278c2d",
+      "artifact_sha256": "4e0413438ddd12bc91f6ba8b6790a28c85b712aa6e5ae25d036e1fdae3824f9a"
+    }
+  ],
+  "notes": [
+    "Source paths are relative to source_root. Source SHA256 hashes identify Git blobs at the pinned revision, independent of local checkout line endings.",
+    "Artifact SHA256 hashes identify the imported or adapted files with LF line endings.",
+    "New packaging, orchestration, documentation, and extraction-specific tests are local additions.",
+    "External CRAB snapshot equivalence and reported checkpoint/data reproduction remain unverified."
+  ]
+}

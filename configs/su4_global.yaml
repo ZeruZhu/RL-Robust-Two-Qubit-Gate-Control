@@ -1,0 +1,102 @@
+system: two_qubit
+control_model: kak_exchange_27
+action_mode: residual
+base_mode: analytic
+residual_scale: 1.0
+kak_exchange_basis_convention: coworker_exchange_compiled
+experiment_name: su4_global
+target_gate: random_su4
+target_sampling: haar_su4
+initial_gate: II
+segment_time: 3.0e-08
+num_walsh_modes: 2
+num_time_bins: 2
+walsh_order: sequency
+noise_observability: hidden
+reward_eps: 1.0e-08
+reward_mode: log_infidelity
+horizon_end: terminated
+disable_analytic_reference: true
+seed: 17
+control_bounds:
+  gamma_phase_max: 3.141592653589793
+noise:
+  enabled: true
+  detuning_std: 5000000.0
+  kak_exchange_detuning_segments: all
+  relaxation_rates:
+  - 2.6525823848649225e3
+  - 5.305164769729845e3
+  dephasing_rates:
+  - 2.411438531695384e3
+  - 3.183098861837907e4
+fidelity_only_eight_agent:
+  stage_order:
+  - alpha_0
+  - alpha_1
+  - g_0
+  - g_1
+  - x_0
+  - x_1
+  - y_0
+  - y_1
+  history_length: 4
+  alpha_update_mode: accept_reject
+  alpha_increment_scale: 2500000.0
+  alpha_bound: 40000000.0
+  g_bound: 16000000.0
+  g_proposal_radii:
+  - 2000000.0
+  - 1000000.0
+  - 500000.0
+  - 250000.0
+  xy_bound: 8000000.0
+  xy_proposal_radii:
+  - 1000000.0
+  - 500000.0
+  - 250000.0
+  - 125000.0
+  acceptance_tolerance: 0.0
+  score_observation_scale: 8.0
+  residual_projection: local_pauli
+  residual_projection_observation_scale: 5000000.0
+  clip_residual_projection_observation: false
+  train_contexts: 20000
+  train_seed_start: 800000
+  validation_contexts: 256
+  validation_seed_start: 830000
+  test_contexts: 2048
+  test_seed_start: 920000
+fidelity_only_training:
+  stage_episodes: 20000
+  learning_starts: 1000
+  alpha_buffer_size: 500000
+  proposal_buffer_size: 100000
+  batch_size: 512
+  actor_hidden_layers:
+  - 300
+  - 300
+  - 300
+  - 300
+  - 300
+  critic_hidden_layers:
+  - 300
+  - 300
+  - 300
+  - 300
+  - 300
+  actor_lr: 4.0e-05
+  critic_lr: 0.0003
+  gamma: 0.99
+  tau: 0.005
+  policy_delay: 2
+  alpha_action_noise_sigma: 0.05
+  proposal_action_noise_sigma: 0.1
+  target_policy_noise: 0.05
+  target_noise_clip: 0.1
+  checkpoint_every_episodes: 500
+  eval_every_episodes: 1000
+  checkpoint_eval_episodes: 256
+  seed: 17
+  device: auto
+  save_replay_buffer: true

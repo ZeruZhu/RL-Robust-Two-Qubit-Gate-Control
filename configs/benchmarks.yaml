@@ -1,0 +1,25 @@
+# Numerical settings from the selected research runs. Paths are CLI arguments.
+grape:
+  method: robust
+  num_time_bins: 140
+  iterations: 300
+  detuning_std: 5000000.0
+  robust_quadrature_order: 7
+  learning_rate: 0.05
+  max_backtracks: 16
+crab:
+  method: robust
+  basis_size: 2
+  basis_seed: 17
+  iterations: 300
+  detuning_std: 5000000.0
+  robust_quadrature_order: 7
+  rtol: 1.0e-8
+  atol: 1.0e-10
+  points_per_period: 8
+  maxls: 20
+  maxcor: 10
+  ftol: 1.0e-12
+  gtol: 1.0e-7
+  maxfun: 100000
+  projection_fd_step: 1.0e-6

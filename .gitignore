@@ -1,0 +1,26 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.egg-info/
+/dist/
+
+# Generated runs and caches, not the curated release data or figure assets.
+/outputs/
+/runs/
+/checkpoints/
+/tmp/
+/build/
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz

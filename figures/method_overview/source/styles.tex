@@ -1,0 +1,40 @@
+\definecolor{ink}{HTML}{252B31}
+\definecolor{muted}{HTML}{59636D}
+\definecolor{rulegray}{HTML}{D4DADE}
+\definecolor{localblue}{HTML}{0072B2}
+\definecolor{exchangeorange}{HTML}{C65D10}
+\definecolor{feedbackgreen}{HTML}{007F73}
+\definecolor{xgreen}{HTML}{008967}
+\definecolor{ymagenta}{HTML}{9B4F83}
+\definecolor{trainingpurple}{HTML}{72568F}
+\definecolor{trainingfill}{HTML}{F4F0F8}
+
+\tikzset{
+    flow/.style={-{Latex[length=1.5mm,width=1.1mm]},
+        draw=ink!80,line width=0.65pt},
+    feedbackflow/.style={flow,draw=feedbackgreen},
+    detail/.style={draw=muted!65,line width=0.55pt,
+        dash pattern=on 2.2pt off 2.2pt},
+    separator/.style={draw=rulegray,line width=0.5pt},
+    paneltitle/.style={anchor=west,inner sep=0pt,
+        font=\fontsize{9.5}{11}\selectfont\bfseries},
+    smallnote/.style={font=\fontsize{7.3}{8.7}\selectfont,
+        text=muted,align=center,inner sep=1pt},
+    edgelabel/.style={font=\fontsize{7.4}{8.8}\selectfont,
+        text=muted,fill=white,inner sep=1.5pt,align=center},
+    box/.style={draw=ink!45,fill=white,line width=0.6pt,
+        rounded corners=1.2pt,align=center,inner sep=3pt},
+    localbox/.style={box,draw=localblue!75,fill=localblue!5},
+    exchangebox/.style={box,draw=exchangeorange!75,
+        fill=exchangeorange!7},
+    feedbackbox/.style={box,draw=feedbackgreen!75,
+        fill=feedbackgreen!5},
+    policy/.style={box,minimum width=0.92cm,minimum height=0.44cm,
+        inner sep=1pt,font=\fontsize{8.8}{10}\selectfont},
+    tag/.style={circle,fill=white,draw=muted!65,line width=0.55pt,
+        minimum size=0.32cm,inner sep=0pt,
+        font=\fontsize{7.4}{8}\selectfont\bfseries},
+}
+
+\newcommand{\panelheading}[3]{%
+    \node[paneltitle] at (#1,#2) {#3};}

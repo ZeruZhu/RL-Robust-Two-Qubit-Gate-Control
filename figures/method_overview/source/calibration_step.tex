@@ -1,0 +1,126 @@
+\panelheading{0.15}{0.22}{(a) One proposal step}
+
+\node[box,text width=2.6cm,minimum height=0.95cm] (target)
+    at (1.95,1.6) {{\fontsize{7.5}{9}\selectfont Target two-qubit gate}\\[2pt]$U_\star$};
+\node[box,minimum width=1.75cm,minimum height=0.5cm] (kak)
+    at (4.6,1.6) {KAK reference};
+\draw[flow] (target.east) -- (kak.west);
+
+\node[box,text width=2.3cm,minimum height=1.05cm,anchor=north,
+    outer sep=0pt] (simulator)
+    at (8.65,2.45) {Noisy evolution\\[2pt]$\mathcal U_{c^k,\delta}$};
+\node[diamond,draw=ink!60,fill=ink!2,line width=0.6pt,
+    minimum width=1.7cm,minimum height=1.05cm,inner sep=1pt,
+    align=center,aspect=1.65,anchor=north,outer sep=0pt] (acceptance)
+    at (11.25,2.45) {$F_k>\bar F$?};
+\node[box,text width=2.2cm,minimum height=1.05cm,anchor=north,
+    outer sep=0pt] (retained)
+    at (16.70,2.45) {Retained pulse\\[2pt]$\bar c,\,\bar F$};
+\draw[flow] (kak.east) -- (16.70,1.6) -- (retained.north);
+\node[edgelabel] at (6.35,1.6) {Initialize};
+\draw[flow] (simulator.east) -- (acceptance.west)
+    node[midway,above,edgelabel,yshift=3pt] {$F_k$};
+\draw[feedbackflow] (acceptance.east) -- (retained.west)
+    node[midway,above,edgelabel,text=feedbackgreen,yshift=3pt]
+    {Yes: accept candidate\\$(\bar c,\bar F)\leftarrow(c^k,F_k)$};
+\coordinate (keepEntry) at ([yshift=-0.30cm]retained.west);
+\draw[flow,draw=muted] (acceptance.south) -- (11.25,4.10)
+    -- (14.45,4.10) |- (keepEntry);
+\node[edgelabel] at (12.85,4.10)
+    {No: keep retained\\pulse and fidelity};
+
+\node[smallnote] (noise) at (8.65,1.98) {Hidden $\delta$};
+\draw[flow,draw=muted] (noise.south) -- (simulator.north);
+\node[align=center] (output) at ($(retained.center)+(2.05,0)$)
+    {$c_{\mathrm{out}}$};
+\draw[flow] (retained.east) -- (output.west);
+\node[smallnote,align=center] at (18.15,2.05)
+    {After $C$ complete\\cycles of (b)};
+
+\begin{scope}[shift={(0,1.25)}]
+\node[localbox,minimum width=2.9cm,minimum height=1.05cm] (controller)
+    at (2.4,4.65) {};
+\foreach \u in {4.37,4.65,4.93}
+    \foreach \v in {4.43,4.87}
+        \draw[draw=localblue!30,line width=0.35pt]
+            (1.3,\u) -- (1.65,\v) -- (1.98,4.65);
+\foreach \y in {4.37,4.65,4.93}
+    \fill[localblue!75] (1.3,\y) circle[radius=0.045cm];
+\foreach \y in {4.43,4.87}
+    \fill[localblue!75] (1.65,\y) circle[radius=0.045cm];
+\fill[localblue] (1.98,4.65) circle[radius=0.045cm];
+\node at (2.92,4.43) {Active actor};
+\node[text=localblue] at (2.92,4.87) {$\pi_\theta$};
+\end{scope}
+
+% Completed proposal steps supply transitions, including rejected proposals.
+\draw[draw=trainingpurple!80,fill=trainingfill,line width=0.65pt,
+    rounded corners=1.2pt,dash pattern=on 2pt off 1.5pt]
+    (0.95,2.45) rectangle (6.45,4.85);
+\node[text=trainingpurple,font=\fontsize{8.5}{10}\selectfont\bfseries]
+    at (3.70,2.82) {TD3 Training Only};
+\node[smallnote,text=ink] (transition) at (4.95,3.42)
+    {Completed proposal step\\$(o_k,a_k,r_k,o_{k+1})$};
+\node[box,draw=trainingpurple!70,minimum width=1.80cm,minimum height=0.55cm,
+    font=\fontsize{7.3}{8.7}\selectfont,inner sep=2pt]
+    (replay) at (5.10,4.32) {Replay buffer};
+\node[box,draw=trainingpurple!70,minimum width=1.70cm,minimum height=0.50cm,
+    font=\fontsize{7.3}{8.7}\selectfont,inner sep=2pt]
+    (criticOne) at (2.15,3.50) {Critic 1: $Q_{\phi_1}$};
+\node[box,draw=trainingpurple!70,minimum width=1.70cm,minimum height=0.50cm,
+    font=\fontsize{7.3}{8.7}\selectfont,inner sep=2pt]
+    (criticTwo) at (2.15,4.32) {Critic 2: $Q_{\phi_2}$};
+\draw[flow,draw=trainingpurple,dash pattern=on 2pt off 1.5pt]
+    (transition.south) -- (4.95,3.89) -- (5.10,3.89) -- (replay.north);
+\node[smallnote,text=trainingpurple] at (5.65,3.88) {Store};
+\draw[flow,draw=trainingpurple,dash pattern=on 2pt off 1.5pt]
+    (replay.west) -- (3.55,4.32) -- (3.55,3.50) -- (criticOne.east);
+\draw[flow,draw=trainingpurple,dash pattern=on 2pt off 1.5pt]
+    (3.55,4.32) -- (criticTwo.east);
+\node[smallnote,text=trainingpurple] at (3.60,4.60)
+    {Sample};
+\draw[flow,draw=trainingpurple,dash pattern=on 2pt off 1.5pt]
+    (criticOne.west) -- (1.12,3.50) -- (1.12,5.15)
+    -- (2.40,5.15) -- (controller.north);
+\node[smallnote,text=trainingpurple,anchor=west]
+    at (2.60,5.15) {Update actor parameters};
+
+\begin{scope}[shift={(0,1.25)}]
+\node[box,draw=localblue!75,minimum width=2.7cm,
+    minimum height=1.05cm] (candidate) at (8.65,4.65) {};
+\node at (8.65,4.34) {Candidate pulse $c^k$};
+\draw[draw=rulegray,line width=0.4pt] (7.65,4.96) -- (9.65,4.96);
+\draw[draw=localblue,line width=0.8pt]
+    (7.65,4.96) -- (7.65,4.74) -- (7.94,4.74) -- (7.94,4.9)
+    -- (8.22,4.9) -- (8.22,4.64) -- (8.51,4.64) -- (8.51,4.84)
+    -- (8.79,4.84) -- (8.79,4.73) -- (9.08,4.73) -- (9.08,4.91)
+    -- (9.36,4.91) -- (9.36,4.67) -- (9.65,4.67) -- (9.65,4.96);
+
+\node[feedbackbox,minimum width=3.4cm,minimum height=1.70cm,anchor=south]
+    (feedback) at ($(controller.south)+(14.30,0)$) {};
+\node at ($(feedback.center)+(0,-0.53)$) {Feedback};
+\node[anchor=west,text=ink,inner sep=0pt]
+    at ($(feedback.center)+(-1.35,-0.15)$)
+    {Gate fidelity $\bar F$};
+\node[anchor=west,text=ink,inner sep=0pt] (segmentFeedback)
+    at ($(feedback.center)+(-1.35,0.35)$) {Segment projection};
+\end{scope}
+
+\draw[flow,draw=localblue] (controller.east) -- (candidate.west)
+    node[midway,above,edgelabel,text=localblue] {Controller action $a_k$};
+\draw[flow] (candidate.north) -- (simulator.south);
+\draw[feedbackflow] (retained.south) -- (feedback.north);
+\draw[feedbackflow] (feedback.east) -| (19.1,0.85)
+    -- (0.3,0.85) -- (0.3,5.90) -- (controller.west);
+\draw[feedbackflow] (12.0,0.85) -- (10.95,0.85);
+\draw[feedbackflow] (0.3,2.85) -- (0.3,3.45);
+\node[edgelabel,text=feedbackgreen,inner xsep=6pt] at (9.7,0.85)
+    {Observation $o_k$};
+
+\foreach \name/\x/\letter in {controller/2.4/b,candidate/8.65/c} {
+    \draw[detail] (\name.south) -- (\x,7.40);
+    \node[tag] at (\name.south) {\letter};
+}
+\draw[detail] ([xshift=0.12cm]segmentFeedback.east) -| (18.60,7.10)
+    -- (16.25,7.10) -- (16.25,7.40);
+\node[tag] at ($(segmentFeedback.east)+(0.40,0)$) {d};

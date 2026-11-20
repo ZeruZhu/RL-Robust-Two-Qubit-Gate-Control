@@ -1,0 +1,18 @@
+{
+  "source_revision": "321d1ee8b038e3399e44d5d38109c52df1011d7c",
+  "tasks": 8,
+  "cycles_per_task": 2,
+  "proposal_steps": 896,
+  "max_absolute_differences": {
+    "target": 0.0,
+    "noise": 0.0,
+    "reference_coefficients": 0.0,
+    "reference_channel": 0.0,
+    "observation": 0.0,
+    "reward": 0.0,
+    "retained_channel": 0.0,
+    "retained_fidelity": 0.0,
+    "coefficients": 0.0
+  },
+  "passed": true
+}

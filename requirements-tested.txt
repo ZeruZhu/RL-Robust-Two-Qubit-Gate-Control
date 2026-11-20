@@ -1,0 +1,9 @@
+# Direct dependency versions exercised on Windows x64 / Python 3.13 / CPU.
+# This is a constraints file, not a transitive or cross-platform lockfile.
+numpy==2.1.3
+scipy==1.15.2
+PyYAML==6.0.2
+gymnasium==1.0.0
+torch==2.7.0
+pytest==8.4.1
+setuptools==75.3.0
